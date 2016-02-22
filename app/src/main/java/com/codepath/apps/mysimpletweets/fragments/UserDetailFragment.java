@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.models.User;
 import com.squareup.picasso.Picasso;
@@ -39,7 +40,7 @@ public class UserDetailFragment extends Fragment {
         View v =  inf.inflate(R.layout.fragment_profile_detail, parent, false);
 
         ImageView ivUserProfileBackgroundImage = (ImageView)v.findViewById(R.id.ivUserProfileBackgroundImage);
-        Picasso.with(getActivity())
+        Glide.with(getActivity())
                 .load(user.profileBackgroundImageUrl)
                 .into(ivUserProfileBackgroundImage);
         TextView tvUserDescription = (TextView)v.findViewById(R.id.tvUserDescription);
@@ -47,7 +48,7 @@ public class UserDetailFragment extends Fragment {
         TextView tvScreenName= (TextView)v.findViewById(R.id.tvScreenName);
         tvScreenName.setText("@" + user.screenName);
         ImageView ivUserProfileImage = (ImageView)v.findViewById(R.id.ivUserProfileImage);
-        Picasso.with(getActivity())
+        Glide.with(getActivity())
                 .load(user.profileImageUrl)
                 .into(ivUserProfileImage);
         TextView tvTweets = (TextView)v.findViewById(R.id.tvTweets);

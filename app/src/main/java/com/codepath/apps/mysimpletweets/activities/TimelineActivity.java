@@ -110,6 +110,8 @@ public class TimelineActivity extends AppCompatActivity implements PostTweetDial
             FragmentManager fm = getSupportFragmentManager();
             PostTweetDialog postTweetDialog = PostTweetDialog.newInstance(user, null);
             postTweetDialog.show(fm, "fragment_post_tweet");
+
+
         } else if (id == R.id.action_profile) {
             showUserProfile(user);
         }

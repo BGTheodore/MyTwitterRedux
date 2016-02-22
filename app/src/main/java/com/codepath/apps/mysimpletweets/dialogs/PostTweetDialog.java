@@ -121,10 +121,10 @@ public class PostTweetDialog extends android.support.v4.app.DialogFragment imple
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // make tweet object and pass back to timeline to add to it
-         /*       Tweet tweet = new Tweet(response);
+                Tweet tweet = new Tweet(response);
                 tweet.save();
                 PostTweetDialogListener listener = (PostTweetDialogListener)getActivity();
-                listener.onPost(tweet);*/
+                listener.onPost(tweet);
                 dismiss();
             }
         });
