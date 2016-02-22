@@ -24,22 +24,16 @@ The following **optional** features are implemented:
  * [x] User can **see a counter with total number of characters left for tweet** on compose tweet page
  * [x] User can **click a link within a tweet body** on tweet details view. The click will launch the web browser with relevant page opened.
  * [x] User can **pull down to refresh tweets timeline**
-  [x] User can **open the twitter app offline and see last loaded tweets**. Persisted in SQLite tweets are refreshed on every application launch. While "live data" is displayed when app can get it from Twitter API, it is also saved for use in offline mode.
+ * [x] User can **open the twitter app offline and see last loaded tweets**. Persisted in SQLite tweets are refreshed on every application launch. While "live data" is displayed when app can get it from Twitter API, it is also saved for use in offline mode.
  * [x] User can tap a tweet to **open a detailed tweet view**
- * [ ] User can **select "reply" from detail view to respond to a tweet**
  * [x] Improve the user interface and theme the app to feel "twitter branded"
 
 The following **bonus** features are implemented:
 
 * [x] User can see embedded image media within the tweet detail view
-* [ ] User can watch embedded video within the tweet
-* [ ] Compose tweet functionality is build using modal overlay
-  [X] Use Parcelable instead of Serializable using the popular [Parceler library](http://guides.codepath.com/android/Using-Parceler).
-* [ ] Apply the popular [Butterknife annotation library](http://guides.codepath.com/android/Reducing-View-Boilerplate-with-Butterknife) to reduce view boilerplate.
-* [ ] Leverage the popular [GSON library](http://guides.codepath.com/android/Using-Android-Async-Http-Client#decoding-with-gson-library) to streamline the parsing of JSON data.
-* [ ] [Leverage RecyclerView](http://guides.codepath.com/android/Using-the-RecyclerView) as a replacement for the ListView and ArrayAdapter for all lists of tweets.
-* [ ] Move the "Compose" action to a [FloatingActionButton](https://github.com/codepath/android_guides/wiki/Floating-Action-Buttons) instead of on the AppBar.
-* [ ] Replace Picasso with [Glide](http://inthecheesefactory.com/blog/get-to-know-glide-recommended-by-google/en) for more efficient image rendering.
+* [x] Compose tweet functionality is build using modal overlay
+* [x] Use Parcelable instead of Serializable using the popular [Parceler library](http://guides.codepath.com/android/Using-Parceler).
+* [x] Replace Picasso with [Glide](http://inthecheesefactory.com/blog/get-to-know-glide-recommended-by-google/en) for more efficient image rendering.
 
 The following **additional** features are implemented:
 
