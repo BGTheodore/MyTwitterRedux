@@ -49,7 +49,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/cbaja/MySimpleTweets/blob/master/My%20Simple%20Tweets-1.gif' title='Video Walkthrough - Project 3 : My Symple Tweets' width='' alt='Video Walkthrough - Project 3 : My Symple Tweets' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
