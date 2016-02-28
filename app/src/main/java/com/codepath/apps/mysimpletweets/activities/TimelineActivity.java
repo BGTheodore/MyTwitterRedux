@@ -2,6 +2,7 @@ package com.codepath.apps.mysimpletweets.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.MenuItemCompat;
@@ -67,6 +68,8 @@ public class TimelineActivity extends AppCompatActivity implements PostTweetDial
         ButterKnife.bind(this);
 
         setSupportActionBar(mToolbar);
+        mToolbar.setTitle("My Simple Tweets");
+        mToolbar.setTitleTextColor(Color.WHITE);
         showProgressBar();
 
         client = TwitterApplication.getRestClient();

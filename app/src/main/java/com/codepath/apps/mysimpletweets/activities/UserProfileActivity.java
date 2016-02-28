@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -24,12 +25,12 @@ public class UserProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
 
+
         User user = getIntent().getExtras().getParcelable("user");
         String screenName = user.screenName;
 
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("@"+screenName);
+        getSupportActionBar().setTitle("@" + screenName);
         if (savedInstanceState == null) {
             UserDetailFragment userDetailFragment = UserDetailFragment.newInstance(user);
             TweetListFragment tweetListFragment = TweetListFragment.newInstance(TweetType.USER.ordinal(), user);
