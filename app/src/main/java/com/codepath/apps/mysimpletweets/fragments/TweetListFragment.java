@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 //import cz.msebera.android.httpclient.Header;
 import org.apache.http.Header;
 
@@ -23,6 +24,7 @@ import com.codepath.apps.mysimpletweets.enums.TweetType;
 import com.codepath.apps.mysimpletweets.models.Tweet;
 import com.codepath.apps.mysimpletweets.models.User;
 import com.codepath.apps.mysimpletweets.utils.EndlessScrollListener;
+import com.codepath.apps.mysimpletweets.utils.Network;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 
@@ -126,6 +128,9 @@ public class TweetListFragment extends Fragment implements AdapterView.OnItemCli
     }
 
     private void populateTimeline(final int page) {
+
+
+
         String userId = (type == TweetType.USER.ordinal() && user != null) ? user.id : null;
         restClient.getTimeline(page, type, userId, new JsonHttpResponseHandler() {
             public void onSuccess(int statusCode, Header[] headers, JSONArray jsonArray) {

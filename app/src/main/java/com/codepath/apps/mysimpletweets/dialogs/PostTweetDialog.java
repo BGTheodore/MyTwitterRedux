@@ -26,6 +26,8 @@ import org.apache.http.Header;
 
 import org.json.JSONObject;
 
+import butterknife.Bind;
+
 /**
  * Created by carlybaja on 2/19/16.
  */
@@ -38,6 +40,10 @@ public class PostTweetDialog extends android.support.v4.app.DialogFragment imple
     private TextView tvCharacterCount;
     private EditText etComposeTweet;
     private Button btnTweet;
+
+ //   @Bind(R.id.tvUserName) TextView mtvUserName;
+ //   @Bind(R.id.tvScreenName) TextView mtvScreenName;
+
 
     public interface PostTweetDialogListener {
         void onPost(Tweet tweet);
@@ -66,8 +72,10 @@ public class PostTweetDialog extends android.support.v4.app.DialogFragment imple
 
         TextView tvUserName = (TextView)view.findViewById(R.id.tvUserName);
         tvUserName.setText(user.name);
+
         TextView tvScreenName = (TextView)view.findViewById(R.id.tvScreeName);
         tvScreenName.setText("@" + user.screenName);
+
         ImageView ivUserProfileImage = (ImageView)view.findViewById(R.id.ivUserProfileImage);
         Picasso.with(getActivity())
                 .load(user.profileImageUrl)
@@ -81,6 +89,7 @@ public class PostTweetDialog extends android.support.v4.app.DialogFragment imple
 
         btnTweet = (Button)view.findViewById(R.id.btnTweet);
         btnTweet.setOnClickListener(this);
+
 
         return view;
     }

@@ -19,6 +19,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
 /**
@@ -35,15 +37,20 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> implements View.OnClickLi
         public void onViewUserProfile(User user);
     }
 
-    private static class ViewHolder {
-        ImageView ivUserImage;
-        TextView tvUserName;
-        TextView tvUserHandler;
-        TextView tvDescription;
-        TextView tvTimestamp;
-        ImageButton ibReply;
-        TextView tvRetweetCount;
-        TextView tvFavoriteCount;
+    static class ViewHolder {
+
+        @Bind(R.id.ivUserImage) ImageView mivUserImage;
+        @Bind(R.id.tvUserName) TextView mtvUserName;
+        @Bind(R.id.tvUserHandle) TextView mtvUserHandle;
+        @Bind(R.id.tvDescription) TextView mtvDescription;
+        @Bind(R.id.tvTimestamp) TextView mtvTimestamp;
+        @Bind(R.id.ibReply) ImageButton mibReply;
+        @Bind(R.id.tvRetweetCount) TextView mtvRetweetCount;
+        @Bind(R.id.tvFavoriteCount) TextView mtvFavoriteCount;
+
+        public ViewHolder(View view){
+            ButterKnife.bind(this,view);
+        }
     }
 
     public TweetsAdapter(Context context, List<Tweet> tweets, TweetsAdapterListener listener) {
@@ -57,37 +64,30 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> implements View.OnClickLi
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_tweet, parent, false);
-            viewHolder = new ViewHolder();
-            viewHolder.ivUserImage = (ImageView)convertView.findViewById(R.id.ivUserImage);
-            viewHolder.tvUserName = (TextView)convertView.findViewById(R.id.tvUserName);
-            viewHolder.tvUserHandler = (TextView)convertView.findViewById(R.id.tvUserHandle);
-            viewHolder.tvDescription = (TextView)convertView.findViewById(R.id.tvDescription);
-            viewHolder.tvTimestamp = (TextView)convertView.findViewById(R.id.tvTimestamp);
-            viewHolder.ibReply = (ImageButton)convertView.findViewById(R.id.ibReply);
-            viewHolder.tvRetweetCount = (TextView)convertView.findViewById(R.id.tvRetweetCount);
-            viewHolder.tvFavoriteCount = (TextView)convertView.findViewById(R.id.tvFavoriteCount);
+            viewHolder = new ViewHolder(convertView);
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder)convertView.getTag();
         }
 
-        viewHolder.tvUserName.setText(tweet.user.name);
-        viewHolder.tvUserHandler.setText(tweet.user.screenName);
-        viewHolder.tvDescription.setText(tweet.text);
-        viewHolder.tvTimestamp.setText(ParseDateHelper.getRelativeTimeAgo(tweet.timeCreated));
-        viewHolder.ibReply.setTag(position);
-        viewHolder.ibReply.setOnClickListener(this);
-        viewHolder.tvRetweetCount.setText(String.valueOf(tweet.retweetCount));
-        viewHolder.tvRetweetCount.setTag(position);
-        viewHolder.tvRetweetCount.setOnClickListener(this);
-        viewHolder.tvFavoriteCount.setText(String.valueOf(tweet.favoriteCount));
-        viewHolder.tvFavoriteCount.setTag(position);
-        viewHolder.tvFavoriteCount.setOnClickListener(this);
+
+        viewHolder.mtvUserName.setText(tweet.user.name);
+        viewHolder.mtvUserHandle.setText(tweet.user.screenName);
+        viewHolder.mtvDescription.setText(tweet.text);
+        viewHolder.mtvTimestamp.setText(ParseDateHelper.getRelativeTimeAgo(tweet.timeCreated));
+        viewHolder.mibReply.setTag(position);
+        viewHolder.mibReply.setOnClickListener(this);
+        viewHolder.mtvRetweetCount.setText(String.valueOf(tweet.retweetCount));
+        viewHolder.mtvRetweetCount.setTag(position);
+        viewHolder.mtvRetweetCount.setOnClickListener(this);
+        viewHolder.mtvFavoriteCount.setText(String.valueOf(tweet.favoriteCount));
+        viewHolder.mtvFavoriteCount.setTag(position);
+        viewHolder.mtvFavoriteCount.setOnClickListener(this);
         Picasso.with(getContext())
                 .load(tweet.user.profileImageUrl)
-                .into(viewHolder.ivUserImage);
-        viewHolder.ivUserImage.setTag(position);
-        viewHolder.ivUserImage.setOnClickListener(this);
+                .into(viewHolder.mivUserImage);
+        viewHolder.mivUserImage.setTag(position);
+        viewHolder.mivUserImage.setOnClickListener(this);
 
         return convertView;
     }

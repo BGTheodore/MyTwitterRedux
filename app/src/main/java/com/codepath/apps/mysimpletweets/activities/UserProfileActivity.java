@@ -2,37 +2,45 @@ package com.codepath.apps.mysimpletweets.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.app.*;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.support.v4.app.Fragment;
+
+
 
 import com.codepath.apps.mysimpletweets.R;
 import com.codepath.apps.mysimpletweets.enums.TweetType;
 import com.codepath.apps.mysimpletweets.fragments.TweetListFragment;
 import com.codepath.apps.mysimpletweets.fragments.UserDetailFragment;
 import com.codepath.apps.mysimpletweets.models.User;
-import com.codepath.apps.mysimpletweets.fragments.*;
+
+
+
 public class UserProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         User user = getIntent().getExtras().getParcelable("user");
-        UserDetailFragment userDetailFragment = UserDetailFragment.newInstance(user);
-        TweetListFragment tweetListFragment = TweetListFragment.newInstance(TweetType.USER.ordinal(), user);
+        String screenName = user.screenName;
 
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-       // fragmentTransaction.replace(R.id.flUserProfileDetailPlaceholder, UserDetailFragment);
-        fragmentTransaction.replace(R.id.flUserTweetsPlaceholder, tweetListFragment);
-        fragmentTransaction.commit();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("@"+screenName);
+        if (savedInstanceState == null) {
+            UserDetailFragment userDetailFragment = UserDetailFragment.newInstance(user);
+            TweetListFragment tweetListFragment = TweetListFragment.newInstance(TweetType.USER.ordinal(), user);
+
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+            fragmentTransaction.replace(R.id.flUserProfileDetailPlaceholder, userDetailFragment);
+            fragmentTransaction.replace(R.id.flUserTweetsPlaceholder, tweetListFragment);
+
+            fragmentTransaction.commit();
+        }
 
     }
 

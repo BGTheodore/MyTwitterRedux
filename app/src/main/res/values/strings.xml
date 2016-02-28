@@ -4,7 +4,7 @@
     <string name="app_name">My Simple Tweets</string>
     <string name="title_activity_timeline">My Simple Tweets</string>
     <string name="login_label">Connect to Twitter</string>
-    <string name="title_activity_user_profile">UserProfileActivity</string>
+    <string name="title_activity_user_profile">Profile</string>
     <string name="action_settings">Setting</string>
     <string name="title_activity_tweet_detail">TweetDetailActivity</string>
     <string name="action_tweet">Tweet Posted</string>

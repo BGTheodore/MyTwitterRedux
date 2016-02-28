@@ -18,52 +18,59 @@ import com.codepath.apps.mysimpletweets.models.Tweet;
 import com.codepath.apps.mysimpletweets.utils.ParseDateHelper;
 import com.squareup.picasso.Picasso;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class TweetDetailActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Tweet tweet;
+
+    @Bind(R.id.tvUserName) TextView mtvUserName;
+    @Bind(R.id.tvScreenName) TextView mtvScreenName;
+    @Bind(R.id.tvBody) TextView mtvBody;
+    @Bind(R.id.tvTimestamp) TextView mtvTimestamp;
+    @Bind(R.id.vLine2) View mvLine2;
+    @Bind(R.id.tvRetweetCount) TextView mtvRetweetCount;
+    @Bind(R.id.tvFavoriteCount) TextView mtvFavoriteCount;
+    @Bind(R.id.ivUserImage) ImageView mivUserImage;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tweet_detail);
+        ButterKnife.bind(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         tweet = getIntent().getParcelableExtra("tweet");
-        TextView tvUserName = (TextView)findViewById(R.id.tvUserName);
-        tvUserName.setText(tweet.user.name);
-        TextView tvScreenName = (TextView)findViewById(R.id.tvScreenName);
-        tvScreenName.setText(tweet.user.screenName);
-        TextView tvBody = (TextView)findViewById(R.id.tvBody);
-        tvBody.setText(tweet.text);
-        TextView tvTimestamp = (TextView)findViewById(R.id.tvTimestamp);
-        tvTimestamp.setText(ParseDateHelper.getPrettyTimeStamp(tweet.timeCreated));
+        mtvUserName.setText(tweet.user.name);
+        mtvScreenName.setText(tweet.user.screenName);
+        mtvBody.setText(tweet.text);
+        mtvTimestamp.setText(ParseDateHelper.getPrettyTimeStamp(tweet.timeCreated));
 
         // default to invisible, only show if there are retweets and/or favorites
-        View vLine2 = (View)findViewById(R.id.vLine2);
-        vLine2.setVisibility(View.INVISIBLE);
+        mvLine2.setVisibility(View.INVISIBLE);
 
         if (tweet.retweetCount > 0) {
             String retweetCountHtml = "<b>" + String.valueOf(tweet.retweetCount) +
                     "</b> <font color='#74363636'>RETWEETS</font>";
-            TextView tvRetweetCount = (TextView) findViewById(R.id.tvRetweetCount);
-            tvRetweetCount.setText(Html.fromHtml(retweetCountHtml));
-            vLine2.setVisibility(View.VISIBLE);
+            mtvRetweetCount.setText(Html.fromHtml(retweetCountHtml));
+            mvLine2.setVisibility(View.VISIBLE);
         }
 
         if (tweet.favoriteCount > 0) {
             String favoriteCountHtml = "<b>" + String.valueOf(tweet.favoriteCount) +
                     "</b> <font color='#74363636'>FAVORITES</font>";
-            TextView tvFavoriteCount = (TextView) findViewById(R.id.tvFavoriteCount);
-            tvFavoriteCount.setText(Html.fromHtml(favoriteCountHtml));
-            vLine2.setVisibility(View.VISIBLE);
+            mtvFavoriteCount.setText(Html.fromHtml(favoriteCountHtml));
+            mvLine2.setVisibility(View.VISIBLE);
         }
 
-        ImageView ivUserImage = (ImageView)findViewById(R.id.ivUserImage);
-        ivUserImage.setOnClickListener(this);
+        mivUserImage.setOnClickListener(this);
         Picasso.with(this)
                 .load(tweet.user.profileImageUrl)
-                .into(ivUserImage);
+                .into(mivUserImage);
     }
 
 
